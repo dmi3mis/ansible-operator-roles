@@ -17,7 +17,7 @@
     fail_msg: "Minimum supported Nexus Version is 3.30."
     quiet: true
 
-- name: Set OpenShift Objects for Nexus to {{ nexus_ocp_state }}
+- name: Set OpenShift Objects for Nexus to "{{ nexus_ocp_state }}"
   community.kubernetes.k8s:
     state: "{{ nexus_ocp_state }}"
     definition: "{{ lookup('template', item ) | from_yaml }}"
@@ -29,7 +29,7 @@
   - registry_route.j2
   - persistent_volume_claim.j2
 
-- name: Set Nexus Deployment to {{ nexus_ocp_state }}
+- name: Set Nexus Deployment to "{{ nexus_ocp_state }}"
   community.kubernetes.k8s:
     state: "{{ nexus_ocp_state }}"
     definition: "{{ lookup('template', 'deployment.j2' ) | from_yaml }}"
